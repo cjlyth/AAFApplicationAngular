@@ -8,13 +8,16 @@ class RequestActions(object):
     APPROVE = 'approve'
     DENY = 'deny'
     CLOSE = 'close'
+    RETURN = 'return'
 
 class RequestStatus(object):
-    CREATED = 'Created'
+    DRAFT = 'Draft'
     SUBMITTED = 'Submitted'
+    PENDING_APPROVAL = 'Pending Approval'
     APPROVED = 'Approved'
-    CANCELLED = 'Cancelled'
-    PAID = 'Paid'
+    RETURNED = 'Returned'
+    DENIED = 'Denied'
+    COMPLETED = 'Completed'
 
 class ResponseType(object):
     SUCCESS = 'success'

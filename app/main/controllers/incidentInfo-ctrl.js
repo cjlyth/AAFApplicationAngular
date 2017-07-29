@@ -1,5 +1,27 @@
 'use strict';
-angular.module('myApp').controller('IncidentInfoCtrl', function ($scope, $http, $state, DataService, $rootScope, $filter) {
+angular.module('myApp').controller('IncidentInfoCtrl', function ($scope, $http, $state, DataService, $rootScope, $filter, $stateParams) {
+
+  var populateDate = function () {
+    if ($rootScope.application.requestContent.incidentInfo.eventDate) {
+      $scope.dt = new Date($rootScope.application.requestContent.incidentInfo.eventDate.$date);
+    }
+  };
+
+  $scope.appId = '';
+  if(!$stateParams.appId) {
+    $state.go('applicationInformation', {});
+  } else if(!$rootScope.application || $rootScope.application._id != $stateParams.appId) {
+    DataService.getApplicationById($stateParams.appId).then(function (result) {
+      if(result) {
+        $rootScope.application = result;
+        populateDate();
+      } else {
+        //TODO: handle error
+      }
+    });
+  } else {
+    populateDate();
+  }
 
   $scope.max = 1000;
   $scope.count = 0;
@@ -18,9 +40,7 @@ angular.module('myApp').controller('IncidentInfoCtrl', function ($scope, $http, 
     $scope.showErrorMessage = false;
     if ($rootScope.application) {
       var date = new Date(document.getElementById('date').value);
-      $rootScope.application.request_content.updatedData = {
-        'incident_date' : $filter('date')(date, 'MM/dd/yyyy')
-      };
+      $rootScope.application.requestContent.incidentInfo.eventDate = { $date : date };
     }
   };
 

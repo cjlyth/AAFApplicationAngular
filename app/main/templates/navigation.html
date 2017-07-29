@@ -1,9 +1,10 @@
-<div class="list-group">
-  <a ng-class="{active: $state.includes('applicationStatus')}" ui-sref="applicationStatus" class=" complete formsteps">Application Status</a>
-  <a ng-class="{active: $state.includes('applicationInformation')}" ui-sref="applicationInformation" class="complete formsteps">Applicant Information</a>
-  <a ng-class="{active: $state.includes('eligiblePersonnel')}" ui-sref="eligiblePersonnel" class="formsteps working">Eligible Personnel</a>
-  <a ng-class="{active: $state.includes('incidentInfo')}" ui-sref="incidentInfo" class="formsteps todo">Incident Info</a>
-  <a ng-class="{active: $state.includes('assistanceRequest')}" ui-sref="assistanceRequest" class="formsteps todo">Assistance Request</a>
-  <a ng-class="{active: $state.includes('other')}" ui-sref="other" class="formsteps todo">Assistance Requested and/or Received</a>
-  <a ng-class="{active: $state.includes('review-submission')}" ui-sref="review-submission" class="formsteps todo">Review and Submission</a>
+<div class="sidenav w-col w-col-3">
+  <h3></h3>
+  <div ng-class="step == 1 ? 'working' : step > 1 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="applicationInformation({appId:appId})">Applicant Information</a></div>
+  <div ng-class="step == 2 ? 'working' : step > 2 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="eligiblePersonnel({appId:appId})">Eligible Personnel</a></div>
+  <div ng-class="step == 3 ? 'working' : step > 3 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="incidentInfo({appId:appId})">Incident Info</a></div>
+  <div ng-class="step == 4 ? 'working' : step > 4 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="assistanceRequest({appId:appId})">Assistance Request</a></div>
+  <div ng-class="step == 5 ? 'working' : step > 5 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="other({appId:appId})">Assistance Requested and/or Received</a></div>
+  <div ng-class="step == 6 ? 'working' : step > 6 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="attachments({appId:appId})">Attachments</a></div>
+  <div ng-class="step == 7 ? 'working' : step > 7 ? 'complete' : 'todo'" class="formsteps"><a ui-sref="review-submission({appId:appId})">Review and Submission</a></div>
 </div>

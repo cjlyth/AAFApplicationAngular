@@ -4,7 +4,11 @@ node_modules/
 tmp
 .DS_Store
 .idea
+__pycache__/
+*.pyc
 *.iml
 *.ipr
 *.iws
 atlassian-ide-plugin.xml
+*.egg-info
+dist/

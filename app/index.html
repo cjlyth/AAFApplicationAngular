@@ -17,8 +17,10 @@
   <link rel="stylesheet" href="/main/assets/css/aaf-36af1a.css"  type="text/css">
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css" type="text/css">
 
   <!-- JS -->
+
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
@@ -31,7 +33,10 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
   <script src="app.js"></script>
+  <script src="bower_components/angular-base64-upload/dist/angular-base64-upload.js"></script>
+  <script src="bower_components/ng-file-model/ng-file-model.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+
   <script type="text/javascript">
     WebFont.load({
       google: {
@@ -42,8 +47,13 @@
   <script src="/main/assets/js/modernizr.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
   <script src="/main/assets/js/aaf-36af1a.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
+  <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
 
 
+  <script src="main/controllers/review-submission-errorModalCtrl.js"></script>
   <script src="main/controllers/applicationInformation-ctrl.js"></script>
   <script src="main/controllers/applicationStatus-ctrl.js"></script>
   <script src="main/controllers/assistanceRequest-ctrl.js"></script>
@@ -52,11 +62,26 @@
   <script src="main/controllers/other-ctrl.js"></script>
   <script src="main/controllers/review-submission-ctrl.js"></script>
   <script src="main/controllers/login-ctrl.js"></script>
+  <script src="main/controllers/return-modal-ctrl.js"></script>
+
+  <script src="main/controllers/approver-application-ctrl.js"></script>
+  <script src="main/controllers/approver-home-ctrl.js"></script>
+  <script src="main/controllers/approver-deny-ctrl.js"></script>
   <script src="main/directives/navigation-dir.js"></script>
+  <script src="main/directives/admin-navigation-dir.js"></script>
   <script src="main/directives/signature-pad-dir.js"></script>
+  <script src="main/directives/incident-info-review-dir.js"></script>
+  <script src="main/directives/applicant-information-review-dir.js"></script>
+  <script src="main/directives/eligible-personnel-dir.js"></script>
+  <script src="main/directives/assistance-request-dir.js"></script>
+  <script src="main/directives/other-dir.js"></script>
   <script src="main/directives/eligible-personnel-row-dir.js"></script>
+  <script src="main/directives/attatchments-review-dir.js"></script>
   <script src="main/directives/limit-word-count-dir.js"></script>
   <script src="main/services/data-service.js"></script>
+  <script src="main/controllers/attachments-ctrl.js"></script>
+  <script src="main/directives/attachments-dir.js"></script>
+  <script src="main/controllers/approvePage-ctrl.js"></script>
 </head>
 <body ng-app="routerApp">
 
@@ -68,8 +93,7 @@
           <img class="brand" height="70" sizes="(max-width: 767px) 98vw, 554px" src="/main/assets/images/i_Brand.png" srcset="/main/assets/images/i_Brand-p-500x64.png 500w, /main/assets/images/i_Brand.png 602w">
         </a>
         <nav class="w-nav-menu" role="navigation">
-          <a class="nav-link w-nav-link" ui-serf="">Español</a>
-          <a class="nav-link signin w-nav-link" ui-sref="login">Sign In</a>
+          <a class="nav-link signin w-nav-link" ui-sref="home">Sign In</a>
         </nav>
         <div class="w-nav-button">
           <div class="w-icon-nav-menu"></div>
@@ -90,9 +114,9 @@
             <h2 class="white">Contact the AAF</h2>
             <div class="med-divider"></div>
         </div>
-        <div class="contact">Phone: 901.555.1212
-            <br>Fax: 901.555.1212
-            <br>Email: test@autozone.com
+        <div class="contact">Phone: 901.495.6198
+            <br>Fax: 901.495.8300
+            <br>Email: assistance.fund@autozone.com
         </div>
       </div>
     </div>

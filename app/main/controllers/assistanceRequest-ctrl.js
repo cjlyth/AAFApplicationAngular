@@ -1,30 +1,32 @@
 'use strict';
 angular.module('myApp')
-.controller('AssistanceRequestCtrl', function ($scope, $state, ModalService) {
+.controller('AssistanceRequestCtrl', function ($scope, $state, $rootScope, $stateParams, DataService) {
+  if(!$stateParams.appId) {
+    $state.go('applicationInformation', {});
+  } else if(!$rootScope.application || $rootScope.application._id != $stateParams.appId) {
+    DataService.getApplicationById($stateParams.appId).then(function (result) {
+      if(result) {
+        $rootScope.application = result;
+      } else {
+        //TODO: handle error
+      }
+    });
+  }
 
 
-  $scope.saveRequestInfo = function (info)
-  {
 
-  {
-    var amount = info.amount;
-      var shelter = info.shelter;
-      var funeral = info.funeral;
-      var utilities = info.utilities;
-      var fire = info.fire;
-      var naturalDisaster = info.naturalDisaster;
-      var other = info.other;
+var data = $scope.user;
+$scope.submitForm = function(isValid) {
 
-console.log(info);
+$scope.submitted = true;
 
-if (fire || funeral == true){
-console.log("true");
+if (( $scope.application.requestContent.assistanceRequested.fire || $scope.application.requestContent.assistanceRequested.other || $scope.application.requestContent.assistanceRequested.utilities||
+  $scope.application.requestContent.assistanceRequested.naturalDisaster || $scope.application.requestContent.assistanceRequested.funeral || $scope.user.options) == true){
+  $state.go('other',{appId:$rootScope.application._id});
 }
-else {
-  console.log("not true");
-}
+
 
   };
-    };
+
 
 });
